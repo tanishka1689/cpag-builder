@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="35" viewBox="0 0 132 35" role="img" aria-labelledby="title">
+  <title id="title">CPAG</title>
+  <rect width="35" height="35" rx="8" fill="#000000"/>
+  <path d="M25 10.5a12.5 12.5 0 1 0 0 14L20.4 21a7 7 0 1 1 0-7Z" fill="#FFFFFF"/>
+  <text x="44" y="25" fill="#000000" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" letter-spacing="1">CPAG</text>
+</svg>
