@@ -70,7 +70,9 @@ export async function runMigrations(): Promise<MigrationResult> {
   try {
 
     // Test connection first
+    console.log('[migration] Testing database connection');
     const canConnect = await testKnexConnection();
+    console.log('[migration] Database connection test completed:', canConnect);
     if (!canConnect) {
       return {
         success: false,
@@ -89,6 +91,8 @@ export async function runMigrations(): Promise<MigrationResult> {
       if (!completed.has(migration.name)) {
 
         try {
+          console.log(`[migration] Starting: ${migration.name}`);
+
           // Run migration in a transaction
           await knex.transaction(async (trx: any) => {
             await migration.up(trx);
@@ -100,6 +104,7 @@ export async function runMigrations(): Promise<MigrationResult> {
             });
           });
 
+          console.log(`[migration] Completed: ${migration.name}`);
           executed.push(migration.name);
         } catch (error) {
           console.error(`[runMigrations] ✗ ${migration.name} failed:`, error);

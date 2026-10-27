@@ -2,6 +2,8 @@ import { runMigrations } from '@/lib/services/migrationService';
 import { runSeeds } from '@/lib/services/seedService';
 import { noCache } from '@/lib/api-response';
 
+export const maxDuration = 300;
+
 /**
  * POST /cpag/api/setup/migrate
  *

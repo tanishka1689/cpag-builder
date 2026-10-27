@@ -13,7 +13,7 @@
       "maxDuration": 300
     },
     "app/(builder)/cpag/api/**/*.ts": {
-      "maxDuration": 60
+      "maxDuration": 300
     },
     "app/(builder)/cpag/mcp/*/route.ts": {
       "maxDuration": 60
