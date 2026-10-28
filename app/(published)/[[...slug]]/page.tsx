@@ -33,7 +33,7 @@ export async function generateStaticParams() {
     const supabase = await getSupabaseAdmin();
 
     if (!supabase) {
-      return [{ slug: [] }];
+      return [];
     }
 
     // Get all published pages and folders (excluding soft-deleted)
@@ -63,7 +63,7 @@ export async function generateStaticParams() {
       .is('deleted_at', null);
 
     if (!pages || !folders) {
-      return [{ slug: [] }];
+      return [];
     }
 
     const params: { slug: string[] }[] = [
@@ -149,7 +149,7 @@ export async function generateStaticParams() {
     return params;
   } catch (error) {
     console.error('Failed to generate static params:', error);
-    return [{ slug: [] }];
+    return [];
   }
 }
 
