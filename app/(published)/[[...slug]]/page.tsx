@@ -36,6 +36,20 @@ export async function generateStaticParams() {
       return [];
     }
 
+    // Do not prerender published pages until the database schema is ready.
+    const schemaChecks = await Promise.all([
+      supabase.from('global_variables').select('*').limit(1),
+      supabase.from('fonts').select('*').limit(1),
+      supabase.from('color_variables').select('*').limit(1),
+    ]);
+
+    if (schemaChecks.some(({ error }) => Boolean(error))) {
+      console.warn(
+        '[generateStaticParams] Skipping static page generation because the database schema is not fully migrated.'
+      );
+      return [];
+    }
+
     // Get all published pages and folders (excluding soft-deleted)
     const { data: pages } = await supabase
       .from('pages')
